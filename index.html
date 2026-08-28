@@ -899,144 +899,6 @@
             transform: scale(1.05);
         }
 
-        .verification-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10002;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-        .verification-modal.active {
-            display: flex;
-        }
-        .verification-modal-content {
-            background: linear-gradient(135deg, #052e16, #064e3b);
-            padding: 35px 30px;
-            border-radius: 30px;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            border: 2px solid #4ade80;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 50px rgba(74, 222, 128, 0.2);
-            animation: slideDown 0.4s ease;
-        }
-        .verification-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-        .verification-title {
-            font-size: 22px;
-            font-weight: 800;
-            color: #4ade80;
-            margin-bottom: 15px;
-        }
-        .verification-message {
-            font-size: 14px;
-            color: #d1fae5;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        .verification-email-display {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            margin: 15px 0;
-            font-size: 16px;
-            font-weight: 600;
-            color: #bbf7d0;
-            word-break: break-all;
-        }
-        .verification-code-input {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .verification-code-input input {
-            width: 45px;
-            height: 50px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            background: #0b1f17;
-            border: 2px solid #2d6a4f;
-            border-radius: 10px;
-            color: #f0fdf4;
-            outline: none;
-            transition: all 0.2s;
-        }
-        .verification-code-input input:focus {
-            border-color: #4ade80;
-            box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
-        }
-        .verification-code-input input[aria-invalid="true"] {
-            border-color: #f87171;
-            box-shadow: 0 0 0 3px rgba(248,113,113,0.2);
-        }
-        .verification-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .verification-btn {
-            padding: 12px 24px;
-            border-radius: 16px;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-        }
-        .verification-btn-verify {
-            background: #22c55e;
-            color: #052e16;
-        }
-        .verification-btn-verify:hover {
-            background: #4ade80;
-            transform: scale(1.05);
-        }
-        .verification-btn-resend {
-            background: transparent;
-            color: #4ade80;
-            border: 2px solid #4ade80;
-        }
-        .verification-btn-resend:hover {
-            background: rgba(74, 222, 128, 0.1);
-        }
-        .verification-btn-cancel {
-            background: #64748b;
-            color: white;
-        }
-        .verification-btn-cancel:hover {
-            background: #475569;
-        }
-        .verification-timer {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 10px;
-        }
-        .verification-error {
-            font-size: 13px;
-            color: #fca5a5;
-            margin-top: 10px;
-            display: none;
-        }
-        .verification-error.show {
-            display: block;
-            animation: slideUp 0.3s ease;
-        }
-
         @media (max-width: 768px) {
             input[type="text"],
             input[type="email"],
@@ -1047,14 +909,6 @@
             }
             .radio-option {
                 padding: 14px 16px;
-            }
-            .verification-code-input {
-                gap: 8px;
-            }
-            .verification-code-input input {
-                width: 40px;
-                height: 45px;
-                font-size: 20px;
             }
         }
 
@@ -1084,27 +938,11 @@
             .radio-label {
                 font-size: 14px;
             }
-            .verification-modal-content {
-                padding: 25px 20px;
-            }
-            .verification-code-input {
-                gap: 6px;
-            }
-            .verification-code-input input {
-                width: 35px;
-                height: 40px;
-                font-size: 18px;
-            }
         }
 
         @media (max-width: 350px) {
             .card { padding: 16px 12px; }
             .title { font-size: 20px; }
-            .verification-code-input input {
-                width: 30px;
-                height: 35px;
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -1142,36 +980,6 @@
             ⏰ Waktu: 00:01 - 23:59 WIB
         </div>
         <button class="lock-close-btn" id="lockCloseBtn">Tutup</button>
-    </div>
-</div>
-
-<!-- MODAL VERIFIKASI EMAIL -->
-<div id="verificationModal" class="verification-modal">
-    <div class="verification-modal-content">
-        <div class="verification-icon">📧</div>
-        <div class="verification-title">Verifikasi Email</div>
-        <div class="verification-message">
-            Kami telah mengirimkan kode verifikasi ke email Anda:
-        </div>
-        <div class="verification-email-display" id="verificationEmailDisplay">email@example.com</div>
-        <div class="verification-message">
-            Silakan cek inbox atau folder spam Anda. Masukkan kode 6 digit di bawah ini:
-        </div>
-        <div class="verification-code-input" id="verificationCodeInput">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 1">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 2">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 3">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 4">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 5">
-            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" aria-label="Digit 6">
-        </div>
-        <div class="verification-error" id="verificationError">Kode yang Anda masukkan salah. Silakan coba lagi.</div>
-        <div class="verification-timer" id="verificationTimer">Kode berlaku hingga: 05:00</div>
-        <div class="verification-buttons">
-            <button class="verification-btn verification-btn-verify" id="verifyBtn">✅ Verifikasi</button>
-            <button class="verification-btn verification-btn-resend" id="resendBtn">📤 Kirim Ulang</button>
-            <button class="verification-btn verification-btn-cancel" id="cancelVerifyBtn">❌ Batal</button>
-        </div>
     </div>
 </div>
 
@@ -1248,10 +1056,11 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="nim">NIM <span class="required">*</span></label>
-                <input type="text" id="nim" name="nim" placeholder="Nomor Induk Mahasiswa (angka)" maxlength="20" required aria-required="true" inputmode="numeric" pattern="[0-9]*" autocomplete="off" disabled>
+                <label class="form-label" for="nim">NIM (9 digit) <span class="required">*</span></label>
+                <input type="text" id="nim" name="nim" placeholder="Masukkan 9 digit NIM" maxlength="9" required aria-required="true" inputmode="numeric" pattern="[0-9]*" autocomplete="off" disabled>
                 <div class="field-error" id="nimError" aria-live="polite"></div>
                 <div class="field-warning" id="nimWarning" aria-live="polite"></div>
+                <div class="field-hint">NIM harus tepat 9 digit angka</div>
             </div>
 
             <div class="form-group">
@@ -1270,10 +1079,10 @@
 
             <div class="form-group">
                 <label class="form-label" for="whatsapp">No. WhatsApp Orang Tua/Wali <span class="required">*</span></label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx (13-15 digit)" maxlength="16" inputmode="tel" autocomplete="tel-national" required aria-required="true" disabled>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxxx (13-15 digit)" maxlength="16" inputmode="tel" autocomplete="tel-national" required aria-required="true" disabled>
                 <div class="field-error" id="whatsappError" aria-live="polite"></div>
                 <div class="field-warning" id="whatsappWarning" aria-live="polite"></div>
-                <div class="field-hint">Batasi hanya sampai dengan 13/15 digit angka (contoh: 081234567890)</div>
+                <div class="field-hint">Format: 08xx atau 628xx, 13-15 digit</div>
             </div>
 
             <div class="form-group">
@@ -1334,19 +1143,11 @@
 
 <script>
     // ===================== KONFIGURASI =====================
-    const API_URL = 'https://script.google.com/macros/s/AKfycbxAnhUoU_2pqOnDzifv8Rb44c9ddVYG88RoHKlHPOfFSBjJ6VQ0LNqMoiDbXb2UXo6bKQ/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxAnhUoU_2pqOnDzifv8Rb44c9ddVYG88RoHKlHPOfFSBjJ6VQ0LNqMoiDbXb2UXo6bKQ/exec'; // Ganti dengan URL Web App Google Apps Script
     const FETCH_TIMEOUT = 15000;
-    const SHEET_NAME = 'KonfirmasiKehadiranOrtu2026';
+    const SHEET_NAME = 'KonfirmasiKehadiranOrtu20266';
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 2000;
-    const API_KEY = '';
-    const AUTO_SAVE_INTERVAL = 10;
-
-    const RATE_LIMIT = {
-        maxSubmissions: 3,
-        timeWindow: 3600000,
-        cooldownPeriod: 300000
-    };
 
     const CONFIG_WAKTU = {
         tanggal: '2026-08-29',
@@ -1356,15 +1157,8 @@
 
     // ===================== STATE MANAGEMENT =====================
     let isSubmitting = false;
-    let autoSaveInterval = null;
     let lastSavedData = '';
     let sessionId = null;
-    let emailVerified = false;
-    let pendingSubmitAfterVerification = null;
-    let cooldownInterval = null;
-    let syncDebounceTimer = null;
-    let currentSyncStatus = 'synced';
-    let dataChanged = false;
 
     // ===================== ELEMEN =====================
     const form = document.getElementById('registrationForm');
@@ -1390,50 +1184,30 @@
     const alasanTextarea = document.getElementById('alasan');
     const radioOptions = document.querySelectorAll('.radio-option');
     const radioInputs = document.querySelectorAll('input[name="kehadiran"]');
-    const emailField = document.getElementById('email');
     const whatsappField = document.getElementById('whatsapp');
     const nimField = document.getElementById('nim');
-
-    const verificationModal = document.getElementById('verificationModal');
-    const verificationEmailDisplay = document.getElementById('verificationEmailDisplay');
-    const verificationCodeInput = document.getElementById('verificationCodeInput');
-    const verificationCodeInputs = verificationCodeInput.querySelectorAll('input');
-    const verificationError = document.getElementById('verificationError');
-    const verificationTimer = document.getElementById('verificationTimer');
-    const verifyBtn = document.getElementById('verifyBtn');
-    const resendBtn = document.getElementById('resendBtn');
-    const cancelVerifyBtn = document.getElementById('cancelVerifyBtn');
-
-    let verificationTimerInterval = null;
-    let currentVerificationCode = '';
-    let verificationExpiryTime = 0;
-    let pendingVerificationEmail = '';
 
     let countdownInterval = null;
 
     // ===================== FORMAT TANGGAL =====================
     function formatTanggalDisplay(tanggalStr) {
-        const [year, month, day] = tanggalStr.split('-');
+        const parts = tanggalStr.split('-');
         const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-        return `${parseInt(day)} ${months[parseInt(month) - 1]} ${year}`;
+        return parseInt(parts[2]) + ' ' + months[parseInt(parts[1]) - 1] + ' ' + parts[0];
     }
 
     // ===================== CHECK FORM ACCESS =====================
     function checkFormAccess() {
-        const tanggal = CONFIG_WAKTU.tanggal;
-        const mulai = CONFIG_WAKTU.mulai;
-        const selesai = CONFIG_WAKTU.selesai;
-        
         const now = new Date();
-        const startDateTime = new Date(`${tanggal}T${mulai}:00`);
-        const endDateTime = new Date(`${tanggal}T${selesai}:00`);
+        const startDateTime = new Date(CONFIG_WAKTU.tanggal + 'T' + CONFIG_WAKTU.mulai + ':00');
+        const endDateTime = new Date(CONFIG_WAKTU.tanggal + 'T' + CONFIG_WAKTU.selesai + ':00');
         
         if (now < startDateTime) {
             const timeDiff = startDateTime - now;
             const hours = Math.floor(timeDiff / (1000 * 60 * 60));
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-            lockForm(`🔒 Form akan dibuka dalam ${hours} jam ${minutes} menit.`);
-            showLockModal(`Form akan dibuka dalam ${hours} jam ${minutes} menit.`);
+            lockForm('🔒 Form akan dibuka dalam ' + hours + ' jam ' + minutes + ' menit.');
+            showLockModal('Form akan dibuka dalam ' + hours + ' jam ' + minutes + ' menit.');
             startCountdown(startDateTime);
         } else if (now > endDateTime) {
             lockForm('🔒 Form sudah ditutup. Waktu pelaksanaan telah berakhir.');
@@ -1443,7 +1217,6 @@
             unlockForm();
             hideLockModal();
             stopCountdown();
-            startAutoSave();
         }
     }
     
@@ -1452,12 +1225,11 @@
         formLockStatus.className = 'status warning show';
         formLockStatus.textContent = message;
         
-        document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea').forEach(input => {
+        document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea').forEach(function(input) {
             input.disabled = true;
         });
         submitButton.disabled = true;
         submitButton.textContent = '🔒 Form Terkunci';
-        stopAutoSave();
     }
     
     function unlockForm() {
@@ -1465,13 +1237,13 @@
         formLockStatus.className = 'status success show';
         formLockStatus.textContent = '✅ Form sudah dibuka. Silakan isi absen Anda.';
         
-        document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea').forEach(input => {
+        document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea').forEach(function(input) {
             input.disabled = false;
         });
         submitButton.disabled = false;
-        submitButton.textContent = '✨ Kirim Konfirmasi ✨';
+        submitButton.textContent = '✨ Konfirmasi Kehadiran ✨';
         
-        setTimeout(() => {
+        setTimeout(function() {
             formLockStatus.className = 'status';
         }, 3000);
     }
@@ -1479,10 +1251,7 @@
     // ===================== MODAL FUNCTIONS =====================
     function showLockModal(message) {
         lockModalMessage.textContent = message;
-        lockModalInfo.innerHTML = `
-            📅 Tanggal: ${formatTanggalDisplay(CONFIG_WAKTU.tanggal)}<br>
-            ⏰ Waktu: ${CONFIG_WAKTU.mulai} - ${CONFIG_WAKTU.selesai} WIB
-        `;
+        lockModalInfo.innerHTML = '📅 Tanggal: ' + formatTanggalDisplay(CONFIG_WAKTU.tanggal) + '<br>⏰ Waktu: ' + CONFIG_WAKTU.mulai + ' - ' + CONFIG_WAKTU.selesai + ' WIB';
         lockModal.classList.add('active');
     }
 
@@ -1539,12 +1308,14 @@
         }
     });
 
-    // ===================== BASE64 =====================
+    // ===================== BASE64 ENCODE =====================
     function encodeBase64(data) {
         const json = JSON.stringify(data);
         const bytes = new TextEncoder().encode(json);
         let binary = '';
-        bytes.forEach(byte => binary += String.fromCharCode(byte));
+        bytes.forEach(function(byte) {
+            binary += String.fromCharCode(byte);
+        });
         return btoa(binary);
     }
 
@@ -1557,72 +1328,47 @@
             .replace(/\s+/g, ' ')
             .replace(/[^a-z0-9\s'-]/g, '')
             .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .map(function(word) {
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
             .join(' ');
     }
 
     function normalizeWhatsApp(number) {
         if (!number) return '';
         let phone = String(number).trim().replace(/[^\d+]/g, '');
-        if (phone.startsWith('+62')) phone = '62' + phone.substring(3);
-        else if (phone.startsWith('0062')) phone = '62' + phone.substring(4);
-        else if (phone.startsWith('08')) phone = '62' + phone.substring(1);
-        else if (phone.startsWith('8')) phone = '62' + phone;
+        if (phone.startsWith('+')) phone = phone.substring(1);
+        phone = phone.replace(/\D/g, '');
+        if (phone.startsWith('08')) phone = '62' + phone.substring(1);
+        else if (phone.startsWith('8') && !phone.startsWith('628')) phone = '62' + phone;
         return phone;
     }
 
-    // ===================== VALIDASI (DIPERBAIKI) =====================
-    function isValidEmail(email) {
-        if (!email) return true; // opsional
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // ===================== VALIDASI =====================
+    function isValidNIM(nim) {
+        return /^\d{9}$/.test(nim);
     }
 
     function isValidWhatsApp(number) {
-        if (!number) return false;
         const clean = String(number).replace(/\D/g, '');
-        
-        // Harus 13-15 digit total
         if (clean.length < 13 || clean.length > 15) return false;
-        
-        // Harus dimulai dengan 08 atau 628
-        if (clean.startsWith('08')) {
-            return clean.length >= 13 && clean.length <= 15;
-        } else if (clean.startsWith('628')) {
-            return clean.length >= 13 && clean.length <= 15;
-        }
-        return false;
+        return clean.startsWith('08') || clean.startsWith('628');
     }
 
-    function isValidNIM(nim) {
-        // NIM harus angka, minimal 8 digit, maksimal 20 digit
-        return /^\d{8,20}$/.test(nim);
+    function isValidEmail(email) {
+        if (!email) return true;
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // ===================== INPUT MASKING WHATSAPP =====================
-    whatsappField.addEventListener('input', function(e) {
-        if (this.disabled) return;
-        let value = this.value.replace(/\D/g, '');
-        if (value.length > 15) value = value.slice(0, 15);
-        
-        // Format otomatis: 08xx-xxxx-xxxx atau 628xx-xxxx-xxxx
-        if (value.startsWith('08') && value.length > 4) {
-            this.value = value.slice(0, 4) + '-' + value.slice(4, 8) + (value.length > 8 ? '-' + value.slice(8, 12) : '') + (value.length > 12 ? '-' + value.slice(12, 15) : '');
-        } else if (value.startsWith('628') && value.length > 5) {
-            this.value = value.slice(0, 5) + '-' + value.slice(5, 9) + (value.length > 9 ? '-' + value.slice(9, 13) : '') + (value.length > 13 ? '-' + value.slice(13, 15) : '');
-        } else {
-            this.value = value;
-        }
-        
-        validateFieldRealTime('whatsapp');
-        saveDraftNow();
+    // ===================== INPUT MASKING =====================
+    nimField.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 9);
     });
 
-    // ===================== INPUT MASKING NIM =====================
-    nimField.addEventListener('input', function(e) {
-        if (this.disabled) return;
-        this.value = this.value.replace(/\D/g, '').slice(0, 20);
-        validateFieldRealTime('nim');
-        saveDraftNow();
+    whatsappField.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length > 15) value = value.slice(0, 15);
+        this.value = value;
     });
 
     // ===================== STATUS =====================
@@ -1639,9 +1385,6 @@
 
     // ===================== SYNC INDICATOR =====================
     function setSyncStatus(status) {
-        if (status === currentSyncStatus) return;
-        currentSyncStatus = status;
-        
         switch(status) {
             case 'syncing':
                 syncDot.className = 'sync-dot syncing';
@@ -1655,26 +1398,7 @@
                 syncDot.className = 'sync-dot error';
                 syncText.textContent = '🔴 Gagal sinkronisasi';
                 break;
-            case 'saving':
-                syncDot.className = 'sync-dot syncing';
-                syncText.textContent = '🟡 Menyimpan data...';
-                break;
         }
-    }
-
-    function triggerSyncDebounce() {
-        setSyncStatus('syncing');
-        dataChanged = true;
-        
-        if (syncDebounceTimer) {
-            clearTimeout(syncDebounceTimer);
-        }
-        
-        syncDebounceTimer = setTimeout(() => {
-            setSyncStatus('synced');
-            dataChanged = false;
-            syncDebounceTimer = null;
-        }, 1500);
     }
 
     // ===================== FIELD ERROR =====================
@@ -1683,11 +1407,6 @@
         if (errorElement) {
             errorElement.textContent = message;
             errorElement.classList.add('show');
-        }
-        const warningElement = document.getElementById(fieldId + 'Warning');
-        if (warningElement) {
-            warningElement.textContent = '';
-            warningElement.classList.remove('show');
         }
         const input = document.getElementById(fieldId);
         if (input) input.setAttribute('aria-invalid', 'true');
@@ -1703,40 +1422,6 @@
         if (input) input.setAttribute('aria-invalid', 'false');
     }
 
-    // ===================== FIELD WARNING =====================
-    function showFieldWarning(fieldId, message) {
-        const warningElement = document.getElementById(fieldId + 'Warning');
-        if (warningElement) {
-            warningElement.textContent = message;
-            warningElement.classList.add('show');
-        }
-        const errorElement = document.getElementById(fieldId + 'Error');
-        if (errorElement) {
-            errorElement.textContent = '';
-            errorElement.classList.remove('show');
-        }
-    }
-
-    function clearFieldWarning(fieldId) {
-        const warningElement = document.getElementById(fieldId + 'Warning');
-        if (warningElement) {
-            warningElement.textContent = '';
-            warningElement.classList.remove('show');
-        }
-    }
-
-    // ===================== LOADING =====================
-    function setLoading(loading) {
-        submitButton.disabled = loading;
-        if (loading) {
-            submitButton.innerHTML = '<span class="button-loading"><span class="spinner"></span> Mengirim...</span>';
-            setSyncStatus('saving');
-        } else {
-            submitButton.innerHTML = '✨ Kirim Konfirmasi ✨';
-            triggerSyncDebounce();
-        }
-    }
-
     // ===================== CLIENT ID =====================
     function getClientId() {
         let clientId = localStorage.getItem('clientId');
@@ -1747,417 +1432,11 @@
         return clientId;
     }
 
-    // ===================== SESSION =====================
     function getSessionId() {
         if (!sessionId) {
             sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
         return sessionId;
-    }
-
-    function checkSession() {
-        const sessionData = JSON.parse(sessionStorage.getItem('formSession') || '{}');
-        if (sessionData.submitted) {
-            showFieldWarning('namaOrtu', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('hubungan', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('nama', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('nim', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('prodi', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('whatsapp', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showFieldWarning('kehadiran', '⚠️ Anda sudah mengisi absen pada sesi ini');
-            showStatus('warning', '⚠️ Anda sudah mengisi absen pada sesi ini. Tidak dapat mengirim ulang.');
-            form.classList.add('form-locked');
-            document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea').forEach(input => {
-                input.disabled = true;
-            });
-            submitButton.disabled = true;
-            submitButton.textContent = '🔒 Sudah Terkirim';
-            return false;
-        }
-        return true;
-    }
-
-    function markSessionSubmitted() {
-        sessionStorage.setItem('formSession', JSON.stringify({
-            submitted: true,
-            sessionId: getSessionId(),
-            timestamp: Date.now()
-        }));
-    }
-
-    // ===================== RATE LIMITING =====================
-    function checkRateLimit() {
-        const now = Date.now();
-        let rateData;
-        
-        try {
-            rateData = JSON.parse(localStorage.getItem('rateLimitData') || '{"submissions":[],"cooldownUntil":0}');
-        } catch (e) {
-            rateData = { submissions: [], cooldownUntil: 0 };
-        }
-        
-        if (rateData.cooldownUntil && now < rateData.cooldownUntil) {
-            const remainingCooldown = Math.ceil((rateData.cooldownUntil - now) / 60000);
-            showStatus('error', `⏳ Terlalu banyak percobaan. Silakan tunggu ${remainingCooldown} menit lagi.`);
-            startCooldownCountdown(rateData.cooldownUntil);
-            return false;
-        }
-        
-        if (rateData.cooldownUntil && now >= rateData.cooldownUntil) {
-            rateData = { submissions: [], cooldownUntil: 0 };
-            localStorage.setItem('rateLimitData', JSON.stringify(rateData));
-            stopCooldownCountdown();
-            clearStatus();
-            showStatus('info', '✅ Cooldown selesai. Anda bisa mencoba lagi.');
-            setTimeout(clearStatus, 3000);
-        }
-        
-        rateData.submissions = rateData.submissions.filter(timestamp => 
-            now - timestamp < RATE_LIMIT.timeWindow
-        );
-        
-        if (rateData.submissions.length >= RATE_LIMIT.maxSubmissions) {
-            rateData.cooldownUntil = now + RATE_LIMIT.cooldownPeriod;
-            localStorage.setItem('rateLimitData', JSON.stringify(rateData));
-            showStatus('error', `⏳ Terlalu banyak percobaan. Silakan tunggu ${RATE_LIMIT.cooldownPeriod / 60000} menit.`);
-            startCooldownCountdown(rateData.cooldownUntil);
-            return false;
-        }
-        
-        rateData.submissions.push(now);
-        localStorage.setItem('rateLimitData', JSON.stringify(rateData));
-        
-        return true;
-    }
-
-    function startCooldownCountdown(cooldownUntil) {
-        stopCooldownCountdown();
-        
-        function updateCooldown() {
-            const now = Date.now();
-            const remaining = cooldownUntil - now;
-            
-            if (remaining <= 0) {
-                stopCooldownCountdown();
-                const rateData = { submissions: [], cooldownUntil: 0 };
-                localStorage.setItem('rateLimitData', JSON.stringify(rateData));
-                clearStatus();
-                showStatus('success', '✅ Cooldown selesai. Anda bisa mencoba lagi.');
-                setTimeout(clearStatus, 3000);
-                if (!form.classList.contains('form-locked')) {
-                    submitButton.disabled = false;
-                    submitButton.textContent = '✨ Kirim Konfirmasi ✨';
-                }
-                return;
-            }
-            
-            const minutes = Math.floor(remaining / 60000);
-            const seconds = Math.floor((remaining % 60000) / 1000);
-            showStatus('error', `⏳ Terlalu banyak percobaan. Silakan tunggu ${minutes}:${String(seconds).padStart(2, '0')} lagi.`);
-        }
-        
-        updateCooldown();
-        cooldownInterval = setInterval(updateCooldown, 1000);
-    }
-
-    function stopCooldownCountdown() {
-        if (cooldownInterval) {
-            clearInterval(cooldownInterval);
-            cooldownInterval = null;
-        }
-    }
-
-    function checkAndCleanExpiredRateLimit() {
-        try {
-            const now = Date.now();
-            const rateData = JSON.parse(localStorage.getItem('rateLimitData') || '{"submissions":[],"cooldownUntil":0}');
-            
-            if (rateData.cooldownUntil && now >= rateData.cooldownUntil) {
-                localStorage.setItem('rateLimitData', JSON.stringify({
-                    submissions: [],
-                    cooldownUntil: 0
-                }));
-                stopCooldownCountdown();
-                clearStatus();
-            }
-            
-            if (rateData.submissions && rateData.submissions.length > 0) {
-                const filteredSubmissions = rateData.submissions.filter(timestamp => 
-                    now - timestamp < RATE_LIMIT.timeWindow
-                );
-                
-                if (filteredSubmissions.length !== rateData.submissions.length) {
-                    rateData.submissions = filteredSubmissions;
-                    localStorage.setItem('rateLimitData', JSON.stringify(rateData));
-                }
-            }
-        } catch (e) {
-            localStorage.setItem('rateLimitData', JSON.stringify({
-                submissions: [],
-                cooldownUntil: 0
-            }));
-        }
-    }
-
-    // ===================== VERIFIKASI EMAIL =====================
-    async function sendVerificationCodeRealTime(email) {
-        try {
-            setSyncStatus('syncing');
-            
-            const response = await fetchWithTimeout(`${API_URL}?action=sendVerificationEmail&email=${encodeURIComponent(email)}`, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' },
-                mode: 'cors'
-            }, 10000);
-            
-            const responseText = await response.text();
-            let result;
-            
-            try {
-                result = JSON.parse(responseText);
-            } catch (jsonError) {
-                throw new Error('Respons server tidak valid');
-            }
-            
-            if (result.success) {
-                const verificationData = {
-                    email: email,
-                    expiryTime: result.expiryTime,
-                    remainingTime: result.remainingTime,
-                    timestamp: Date.now()
-                };
-                localStorage.setItem('emailVerification', JSON.stringify(verificationData));
-                
-                startVerificationTimer(result.remainingTime);
-                triggerSyncDebounce();
-                logActivity('verification_code_sent_real_time', { email: email });
-                
-                return { success: true, message: result.message };
-            } else {
-                setSyncStatus('error');
-                return { success: false, message: result.message || 'Gagal mengirim kode verifikasi' };
-            }
-        } catch (error) {
-            console.error('Send verification code error:', error);
-            setSyncStatus('error');
-            return fallbackSendVerificationCode(email);
-        }
-    }
-
-    async function verifyEmailCodeRealTime(email, code) {
-        try {
-            setSyncStatus('syncing');
-            
-            const response = await fetchWithTimeout(`${API_URL}?action=verifyEmailCode&email=${encodeURIComponent(email)}&code=${encodeURIComponent(code)}`, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' },
-                mode: 'cors'
-            }, 10000);
-            
-            const responseText = await response.text();
-            let result;
-            
-            try {
-                result = JSON.parse(responseText);
-            } catch (jsonError) {
-                throw new Error('Respons server tidak valid');
-            }
-            
-            if (result.success) {
-                emailVerified = true;
-                localStorage.removeItem('emailVerification');
-                hideVerificationModal();
-                showStatus('success', '✅ Email berhasil diverifikasi!');
-                triggerSyncDebounce();
-                logActivity('verification_success_real_time', { email: email });
-                
-                return { success: true, message: result.message };
-            } else {
-                setSyncStatus('error');
-                
-                if (result.errorCode === 'EXPIRED') {
-                    verificationError.textContent = 'Kode sudah kedaluwarsa. Silakan kirim ulang.';
-                    verifyBtn.disabled = true;
-                } else if (result.errorCode === 'INVALID_CODE') {
-                    verificationError.textContent = `Kode salah. Sisa percobaan: ${result.remainingAttempts}`;
-                    if (result.remainingAttempts <= 0) {
-                        verifyBtn.disabled = true;
-                    }
-                } else if (result.errorCode === 'MAX_ATTEMPTS') {
-                    verificationError.textContent = 'Terlalu banyak percobaan. Silakan kirim ulang.';
-                    verifyBtn.disabled = true;
-                } else {
-                    verificationError.textContent = result.message || 'Verifikasi gagal';
-                }
-                
-                verificationError.classList.add('show');
-                
-                return { success: false, message: result.message };
-            }
-        } catch (error) {
-            console.error('Verify email code error:', error);
-            setSyncStatus('error');
-            return fallbackVerifyEmailCode(email, code);
-        }
-    }
-
-    function fallbackSendVerificationCode(email) {
-        const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-        const expiryTime = Date.now() + 300000;
-        
-        const verificationData = {
-            email: email,
-            code: verificationCode,
-            expiry: expiryTime,
-            attempts: 0,
-            maxAttempts: 5,
-            timestamp: Date.now()
-        };
-        localStorage.setItem('emailVerification', JSON.stringify(verificationData));
-        
-        startVerificationTimer(300);
-        
-        console.log(`[FALLBACK] Kode verifikasi ${verificationCode} untuk ${email}`);
-        logActivity('verification_code_sent_fallback', { email: email });
-        
-        return { success: true, message: `Kode verifikasi (simulasi): ${verificationCode}` };
-    }
-
-    function fallbackVerifyEmailCode(email, code) {
-        const verificationData = JSON.parse(localStorage.getItem('emailVerification') || '{}');
-        
-        if (!verificationData.code) {
-            return { success: false, message: 'Kode tidak ditemukan' };
-        }
-        
-        if (Date.now() > verificationData.expiry) {
-            return { success: false, message: 'Kode kedaluwarsa' };
-        }
-        
-        verificationData.attempts = (verificationData.attempts || 0) + 1;
-        localStorage.setItem('emailVerification', JSON.stringify(verificationData));
-        
-        if (code === verificationData.code) {
-            emailVerified = true;
-            localStorage.removeItem('emailVerification');
-            return { success: true, message: 'Email berhasil diverifikasi' };
-        }
-        
-        return { success: false, message: 'Kode salah' };
-    }
-
-    function showVerificationModal(email) {
-        pendingVerificationEmail = email;
-        verificationEmailDisplay.textContent = email;
-        verificationModal.classList.add('active');
-        verificationError.classList.remove('show');
-        
-        verificationCodeInputs.forEach(input => {
-            input.value = '';
-            input.removeAttribute('aria-invalid');
-        });
-        
-        setTimeout(() => {
-            verificationCodeInputs[0].focus();
-        }, 100);
-        
-        showStatus('info', '📧 Mengirim kode verifikasi ke email Anda...');
-        sendVerificationCodeRealTime(email).then(result => {
-            if (result.success) {
-                showStatus('success', '✅ Kode verifikasi telah dikirim! Silakan cek email Anda.');
-            } else {
-                showStatus('error', '❌ ' + result.message);
-            }
-        });
-    }
-
-    function hideVerificationModal() {
-        verificationModal.classList.remove('active');
-        stopVerificationTimer();
-    }
-
-    function startVerificationTimer(seconds) {
-        stopVerificationTimer();
-        
-        let remainingSeconds = seconds;
-        
-        verificationTimerInterval = setInterval(() => {
-            if (remainingSeconds <= 0) {
-                stopVerificationTimer();
-                verificationTimer.textContent = 'Kode sudah kedaluwarsa. Silakan kirim ulang.';
-                verificationError.textContent = 'Kode verifikasi sudah kedaluwarsa. Silakan kirim ulang.';
-                verificationError.classList.add('show');
-                verifyBtn.disabled = true;
-                return;
-            }
-            
-            const minutes = Math.floor(remainingSeconds / 60);
-            const secs = remainingSeconds % 60;
-            verificationTimer.textContent = `Kode berlaku hingga: ${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-            
-            remainingSeconds--;
-        }, 1000);
-    }
-
-    function stopVerificationTimer() {
-        if (verificationTimerInterval) {
-            clearInterval(verificationTimerInterval);
-            verificationTimerInterval = null;
-        }
-    }
-
-    function getVerificationCode() {
-        let code = '';
-        verificationCodeInputs.forEach(input => {
-            code += input.value;
-        });
-        return code;
-    }
-
-    async function verifyEmailCode() {
-        const enteredCode = getVerificationCode();
-        
-        if (enteredCode.length !== 6) {
-            verificationError.textContent = 'Masukkan 6 digit kode verifikasi.';
-            verificationError.classList.add('show');
-            return false;
-        }
-        
-        verificationError.classList.remove('show');
-        verifyBtn.disabled = true;
-        verifyBtn.textContent = '⏳ Memverifikasi...';
-        
-        const result = await verifyEmailCodeRealTime(pendingVerificationEmail, enteredCode);
-        
-        verifyBtn.disabled = false;
-        verifyBtn.textContent = '✅ Verifikasi';
-        
-        if (result.success) {
-            if (pendingSubmitAfterVerification) {
-                const data = pendingSubmitAfterVerification;
-                pendingSubmitAfterVerification = null;
-                continueSubmitProcess(data);
-            }
-            return true;
-        }
-        
-        return false;
-    }
-
-    // ===================== LOG AKTIVITAS =====================
-    function logActivity(action, data) {
-        const logs = JSON.parse(localStorage.getItem('activityLogs') || '[]');
-        logs.push({
-            action: action,
-            data: data,
-            timestamp: new Date().toISOString(),
-            sessionId: getSessionId(),
-            clientId: getClientId()
-        });
-        if (logs.length > 100) {
-            logs.splice(0, logs.length - 100);
-        }
-        localStorage.setItem('activityLogs', JSON.stringify(logs));
     }
 
     // ===================== GET KEHADIRAN =====================
@@ -2166,89 +1445,9 @@
         return selected ? selected.value : '';
     }
 
-    // ===================== AUTO-SAVE =====================
-    function startAutoSave() {
-        stopAutoSave();
-        autoSaveInterval = setInterval(() => {
-            saveDraftNow();
-        }, AUTO_SAVE_INTERVAL);
-    }
-
-    function stopAutoSave() {
-        if (autoSaveInterval) {
-            clearInterval(autoSaveInterval);
-            autoSaveInterval = null;
-        }
-    }
-
-    function saveDraftNow() {
-        const draft = {
-            namaOrtu: document.getElementById('namaOrtu').value,
-            hubungan: document.getElementById('hubungan').value,
-            nama: document.getElementById('nama').value,
-            nim: document.getElementById('nim').value,
-            prodi: document.getElementById('prodi').value,
-            whatsapp: document.getElementById('whatsapp').value,
-            email: document.getElementById('email').value,
-            kehadiran: getSelectedKehadiran(),
-            alasan: document.getElementById('alasan').value,
-            keterangan: document.getElementById('keterangan').value,
-            timestamp: Date.now()
-        };
-        
-        const draftString = JSON.stringify(draft);
-        
-        if (draftString !== lastSavedData) {
-            lastSavedData = draftString;
-            localStorage.setItem('formDraft', draftString);
-            
-            if (!dataChanged && currentSyncStatus === 'synced') {
-                triggerSyncDebounce();
-            }
-        }
-    }
-
-    function loadDraft() {
-        const draft = localStorage.getItem('formDraft');
-        if (draft) {
-            try {
-                const data = JSON.parse(draft);
-                if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
-                    document.getElementById('namaOrtu').value = data.namaOrtu || '';
-                    document.getElementById('hubungan').value = data.hubungan || '';
-                    document.getElementById('nama').value = data.nama || '';
-                    document.getElementById('nim').value = data.nim || '';
-                    document.getElementById('prodi').value = data.prodi || '';
-                    document.getElementById('whatsapp').value = data.whatsapp || '';
-                    document.getElementById('email').value = data.email || '';
-                    document.getElementById('alasan').value = data.alasan || '';
-                    document.getElementById('keterangan').value = data.keterangan || '';
-                    
-                    if (data.kehadiran) {
-                        const radioToCheck = document.querySelector(`input[name="kehadiran"][value="${data.kehadiran}"]`);
-                        if (radioToCheck) {
-                            radioToCheck.checked = true;
-                            updateRadioStyles();
-                        }
-                    }
-                    
-                    toggleAlasanField();
-                    lastSavedData = draft;
-                }
-            } catch (e) {
-                console.error('Error loading draft:', e);
-            }
-        }
-    }
-
-    function clearDraft() {
-        localStorage.removeItem('formDraft');
-        lastSavedData = '';
-    }
-
     // ===================== UPDATE RADIO =====================
     function updateRadioStyles() {
-        radioOptions.forEach(option => {
+        radioOptions.forEach(function(option) {
             const radio = option.querySelector('input[type="radio"]');
             if (radio.checked) {
                 option.classList.add('selected');
@@ -2266,357 +1465,75 @@
             alasanGroup.classList.remove('hidden-field');
             alasanTextarea.disabled = false;
             alasanTextarea.required = true;
-            alasanTextarea.setAttribute('aria-required', 'true');
         } else {
             alasanGroup.classList.remove('show');
             alasanGroup.classList.add('hidden-field');
             alasanTextarea.disabled = true;
             alasanTextarea.required = false;
-            alasanTextarea.removeAttribute('aria-required');
             alasanTextarea.value = '';
             clearFieldError('alasan');
-            clearFieldWarning('alasan');
         }
     }
 
-    // ===================== VALIDASI REAL-TIME =====================
-    const validateFieldRealTime = (fieldId) => {
-        const field = document.getElementById(fieldId);
-        if (!field || field.disabled) return;
-        
-        switch(fieldId) {
-            case 'namaOrtu':
-                if (field.value.trim().length > 0 && field.value.trim().length < 2) {
-                    showFieldError('namaOrtu', 'Nama minimal 2 karakter');
-                } else {
-                    clearFieldError('namaOrtu');
-                }
-                break;
-            case 'hubungan':
-                if (field.value && !['ayah', 'ibu', 'wali'].includes(field.value.toLowerCase())) {
-                    showFieldError('hubungan', 'Hubungan harus Ayah, Ibu, atau Wali');
-                } else {
-                    clearFieldError('hubungan');
-                }
-                break;
-            case 'nama':
-                if (field.value.trim().length > 0 && field.value.trim().length < 2) {
-                    showFieldError('nama', 'Nama minimal 2 karakter');
-                } else {
-                    clearFieldError('nama');
-                }
-                break;
-            case 'nim':
-                if (field.value && !isValidNIM(field.value)) {
-                    showFieldError('nim', 'NIM harus 8-20 digit angka');
-                } else {
-                    clearFieldError('nim');
-                }
-                break;
-            case 'whatsapp':
-                if (field.value && !isValidWhatsApp(field.value)) {
-                    showFieldError('whatsapp', 'Nomor WhatsApp tidak valid (13-15 digit, awali 08/628)');
-                } else {
-                    clearFieldError('whatsapp');
-                }
-                break;
-            case 'email':
-                if (field.value && !isValidEmail(field.value)) {
-                    showFieldError('email', 'Format email tidak valid');
-                } else {
-                    clearFieldError('email');
-                }
-                break;
-            case 'alasan':
-                if (getSelectedKehadiran() === 'tidak_hadir') {
-                    if (field.value.trim().length < 5) {
-                        showFieldError('alasan', 'Alasan minimal 5 karakter');
-                    } else {
-                        clearFieldError('alasan');
-                    }
-                }
-                break;
-        }
-    };
-
     // ===================== EVENT LISTENERS =====================
-    ['namaOrtu', 'hubungan', 'nama', 'nim', 'prodi', 'whatsapp', 'email', 'keterangan'].forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        if (field) {
-            field.addEventListener('input', () => {
-                if (!field.disabled) {
-                    validateFieldRealTime(fieldId);
-                    clearFieldWarning(fieldId);
-                    saveDraftNow();
-                }
-            });
-            field.addEventListener('blur', () => {
-                if (!field.disabled) {
-                    validateFieldRealTime(fieldId);
-                }
-            });
-            field.addEventListener('change', () => {
-                if (!field.disabled) {
-                    validateFieldRealTime(fieldId);
-                    saveDraftNow();
-                }
-            });
-        }
-    });
-
-    ['alasan'].forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        if (field) {
-            field.addEventListener('input', () => {
-                if (!field.disabled) {
-                    validateFieldRealTime(fieldId);
-                    saveDraftNow();
-                }
-            });
-            field.addEventListener('blur', () => {
-                if (!field.disabled) {
-                    validateFieldRealTime(fieldId);
-                }
-            });
-        }
-    });
-
-    radioInputs.forEach(radio => {
+    radioInputs.forEach(function(radio) {
         radio.addEventListener('change', function() {
-            if (!this.disabled) {
-                updateRadioStyles();
-                toggleAlasanField();
-                clearFieldError('kehadiran');
-                clearFieldWarning('kehadiran');
-                saveDraftNow();
-            }
+            updateRadioStyles();
+            toggleAlasanField();
+            clearFieldError('kehadiran');
         });
     });
 
-    radioOptions.forEach(option => {
-        option.addEventListener('click', function(e) {
+    radioOptions.forEach(function(option) {
+        option.addEventListener('click', function() {
             const radio = this.querySelector('input[type="radio"]');
             if (radio && !radio.disabled) {
                 radio.checked = true;
                 updateRadioStyles();
                 toggleAlasanField();
                 clearFieldError('kehadiran');
-                clearFieldWarning('kehadiran');
-                saveDraftNow();
-                
-                const event = new Event('change', { bubbles: true });
-                radio.dispatchEvent(event);
             }
         });
-    });
-
-    verificationCodeInputs.forEach((input, index) => {
-        input.addEventListener('input', function() {
-            this.value = this.value.replace(/[^0-9]/g, '');
-            
-            if (this.value.length === 1 && index < verificationCodeInputs.length - 1) {
-                verificationCodeInputs[index + 1].focus();
-            }
-            
-            verificationError.classList.remove('show');
-            verificationCodeInputs.forEach(inp => {
-                inp.removeAttribute('aria-invalid');
-            });
-            
-            if (getVerificationCode().length === 6) {
-                setTimeout(() => verifyEmailCode(), 300);
-            }
-        });
-        
-        input.addEventListener('keydown', function(e) {
-            if (e.key === 'Backspace' && !this.value && index > 0) {
-                verificationCodeInputs[index - 1].focus();
-            }
-        });
-        
-        input.addEventListener('paste', function(e) {
-            e.preventDefault();
-            const pastedText = (e.clipboardData || window.clipboardData).getData('text');
-            const pastedDigits = pastedText.replace(/[^0-9]/g, '').slice(0, 6);
-            
-            if (pastedDigits.length > 0) {
-                verificationCodeInputs.forEach((inp, i) => {
-                    inp.value = pastedDigits[i] || '';
-                });
-                
-                if (pastedDigits.length === 6) {
-                    setTimeout(() => verifyEmailCode(), 300);
-                } else if (pastedDigits.length > 0) {
-                    verificationCodeInputs[Math.min(pastedDigits.length, 5)].focus();
-                }
-            }
-        });
-    });
-
-    verifyBtn.addEventListener('click', async function() {
-        await verifyEmailCode();
-    });
-
-    resendBtn.addEventListener('click', async function() {
-        if (pendingVerificationEmail) {
-            resendBtn.disabled = true;
-            resendBtn.textContent = '⏳ Mengirim...';
-            
-            showStatus('info', '📤 Mengirim ulang kode verifikasi...');
-            
-            const result = await sendVerificationCodeRealTime(pendingVerificationEmail);
-            
-            resendBtn.disabled = false;
-            resendBtn.textContent = '📤 Kirim Ulang';
-            
-            if (result.success) {
-                verificationError.classList.remove('show');
-                verifyBtn.disabled = false;
-                
-                verificationCodeInputs.forEach(input => {
-                    input.value = '';
-                    input.removeAttribute('aria-invalid');
-                });
-                
-                verificationCodeInputs[0].focus();
-                showStatus('success', '✅ Kode verifikasi baru telah dikirim!');
-            } else {
-                showStatus('error', '❌ ' + result.message);
-            }
-        }
-    });
-
-    cancelVerifyBtn.addEventListener('click', function() {
-        hideVerificationModal();
-        localStorage.removeItem('emailVerification');
-        pendingVerificationEmail = '';
-        pendingSubmitAfterVerification = null;
-        showStatus('info', 'ℹ️ Verifikasi email dibatalkan.');
-    });
-
-    // ===================== KONFIRMASI DIALOG (DIPERBAIKI) =====================
-    let pendingSubmitData = null;
-
-    function showConfirmation(data) {
-        pendingSubmitData = data;
-        let alasanDisplay = '';
-        if (data.kehadiran === 'tidak_hadir' && data.alasan) {
-            alasanDisplay = `<br><strong>❌ Alasan:</strong> ${data.alasan}`;
-        }
-        const kehadiranLabel = {
-            'online': '💻 Online (Hadir Virtual)',
-            'offline': '🏢 Offline (Hadir Langsung)',
-            'tidak_hadir': '❌ Tidak Hadir'
-        };
-        const confirmationHTML = `
-            <div class="confirmation-section">
-                <div class="confirmation-section-title">👤 Data Orang Tua/Wali</div>
-                <strong>Nama:</strong> ${data.namaOrtu}<br>
-                <strong>Hubungan:</strong> ${data.hubungan}<br>
-                <strong>WhatsApp:</strong> ${data.whatsapp}
-            </div>
-            <div class="confirmation-section">
-                <div class="confirmation-section-title">🎓 Data Mahasiswa</div>
-                <strong>Nama:</strong> ${data.nama}<br>
-                <strong>NIM:</strong> ${data.nim}<br>
-                <strong>Prodi:</strong> ${data.prodi}
-            </div>
-            <div class="confirmation-section">
-                <div class="confirmation-section-title">📋 Data Absen</div>
-                <strong>Kehadiran:</strong> ${kehadiranLabel[data.kehadiran] || data.kehadiran}${alasanDisplay}
-                ${data.email ? `<br><strong>📧 Email:</strong> ${data.email}` : ''}
-                ${data.keterangan ? `<br><strong>📝 Keterangan:</strong> ${data.keterangan}` : ''}
-            </div>
-        `;
-        confirmationData.innerHTML = confirmationHTML;
-        confirmationDialog.classList.add('active');
-    }
-
-    confirmYes.addEventListener('click', async () => {
-        confirmationDialog.classList.remove('active');
-        if (pendingSubmitData) {
-            await submitToServer(pendingSubmitData);
-            pendingSubmitData = null;
-        }
-    });
-
-    confirmNo.addEventListener('click', () => {
-        confirmationDialog.classList.remove('active');
-        pendingSubmitData = null;
-        isSubmitting = false;
-        showStatus('info', 'ℹ️ Pengiriman dibatalkan. Anda bisa periksa kembali data.');
-        setTimeout(clearStatus, 3000);
     });
 
     // ===================== FETCH =====================
-    async function fetchWithTimeout(url, options, timeout = FETCH_TIMEOUT) {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), timeout);
-        try {
-            const response = await fetch(url, { ...options, signal: controller.signal });
-            return response;
-        } finally {
-            clearTimeout(timeoutId);
-        }
-    }
-
-    async function testConnection() {
-        try {
-            setSyncStatus('syncing');
-            const response = await fetchWithTimeout(`${API_URL}?action=health`, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' },
-                mode: 'cors'
-            }, 8000);
+    function fetchWithTimeout(url, options, timeout) {
+        timeout = timeout || FETCH_TIMEOUT;
+        return new Promise(function(resolve, reject) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(function() {
+                controller.abort();
+            }, timeout);
             
-            const text = await response.text();
-            let result;
-            try {
-                result = JSON.parse(text);
-            } catch {
-                setSyncStatus('error');
-                return false;
-            }
-            
-            if (result && result.success) {
-                triggerSyncDebounce();
-                return true;
-            } else {
-                setSyncStatus('error');
-                return false;
-            }
-        } catch (error) {
-            console.error('Connection test failed:', error);
-            setSyncStatus('error');
-            return false;
-        }
+            fetch(url, Object.assign({}, options, { signal: controller.signal }))
+                .then(function(response) {
+                    clearTimeout(timeoutId);
+                    resolve(response);
+                })
+                .catch(function(error) {
+                    clearTimeout(timeoutId);
+                    reject(error);
+                });
+        });
     }
 
     // ===================== SUBMIT =====================
-    async function submitToServer(payload, retryCount = 0) {
+    async function submitToServer(payload, retryCount) {
+        retryCount = retryCount || 0;
         setLoading(true);
         clearStatus();
         setSyncStatus('syncing');
-        stopAutoSave();
 
         try {
-            const submissionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-            const clientId = getClientId();
-            
-            const dataWithSheet = {
-                ...payload,
+            const dataWithSheet = Object.assign({}, payload, {
                 sheetName: SHEET_NAME,
-                submissionId: submissionId,
-                clientId: clientId,
+                submissionId: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                clientId: getClientId(),
                 sessionId: getSessionId(),
-                timestamp: new Date().toISOString(),
-                emailVerified: emailVerified
-            };
+                timestamp: new Date().toISOString()
+            });
             
             const encodedData = encodeBase64(dataWithSheet);
-            
-            const requestBody = { data: encodedData };
-            if (API_KEY) requestBody.apiKey = API_KEY;
             
             const response = await fetchWithTimeout(API_URL, {
                 method: 'POST',
@@ -2624,13 +1541,12 @@
                     'Content-Type': 'text/plain;charset=utf-8',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(requestBody),
+                body: JSON.stringify({ data: encodedData }),
                 mode: 'cors',
                 cache: 'no-store'
             });
 
             const responseText = await response.text();
-            
             let result;
             try {
                 result = JSON.parse(responseText);
@@ -2638,144 +1554,136 @@
                 throw new Error('Server mengembalikan respons yang tidak valid.');
             }
 
-            if (!response.ok) {
-                throw new Error('HTTP ' + response.status + ': ' + (result.message || response.statusText));
-            }
-
             if (result.success) {
-                let certMsg = '';
-                if (result.certificate && result.certificate.success) {
-                    certMsg = ' ✅ Email konfirmasi berhasil dikirim.';
-                } else if (result.certificate && !result.certificate.success) {
-                    certMsg = ' ⚠️ Absen tersimpan, tetapi email konfirmasi gagal dikirim.';
-                } else {
-                    certMsg = ' ✅ Data tersimpan.';
-                }
-                showStatus('success', `✅ Absen berhasil dikirim!${certMsg}`);
-                triggerSyncDebounce();
+                showStatus('success', '✅ Absen berhasil dikirim!');
+                setSyncStatus('synced');
                 popupSuccess.style.display = 'block';
                 form.reset();
                 updateRadioStyles();
                 toggleAlasanField();
-                clearDraft();
                 isSubmitting = false;
-                
-                logActivity('submit_success', { email: payload.email, nama: payload.nama, nim: payload.nim });
-                markSessionSubmitted();
 
-                setTimeout(() => {
+                setTimeout(function() {
                     popupSuccess.style.display = 'none';
                     splashScreen.classList.remove('splash-hidden');
                     splashScreen.focus();
                 }, 5000);
-            } else if (result.duplicate && result.field === 'nama') {
-                showFieldWarning('nama', '⚠️ Nama mahasiswa sudah terdaftar.');
-                showStatus('warning', '⚠️ Nama mahasiswa sudah terdaftar.');
+            } else if (result.duplicate) {
+                const fieldName = result.field === 'nim' ? 'NIM' : result.field === 'whatsapp' ? 'WhatsApp' : result.field;
+                showFieldError(result.field, '⚠️ ' + fieldName + ' sudah terdaftar.');
+                showStatus('warning', '⚠️ ' + fieldName + ' sudah terdaftar.');
                 setSyncStatus('error');
                 isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_duplicate_nama', { nama: payload.nama });
-            } else if (result.duplicate && result.field === 'whatsapp') {
-                showFieldWarning('whatsapp', '⚠️ Nomor WhatsApp sudah terdaftar.');
-                showStatus('warning', '⚠️ Nomor WhatsApp sudah terdaftar.');
-                setSyncStatus('error');
-                isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_duplicate_whatsapp', { whatsapp: payload.whatsapp });
-            } else if (result.duplicate && result.field === 'nim') {
-                showFieldWarning('nim', '⚠️ NIM sudah terdaftar.');
-                showStatus('warning', '⚠️ NIM sudah terdaftar.');
-                setSyncStatus('error');
-                isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_duplicate_nim', { nim: payload.nim });
             } else {
-                showStatus('error', '❌ ' + (result.message || 'Pengiriman gagal. Silakan coba lagi.'));
+                showStatus('error', '❌ ' + (result.message || 'Pengiriman gagal.'));
                 setSyncStatus('error');
                 isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_error', { message: result.message });
             }
         } catch (error) {
             console.error('Submit error:', error);
             
             if (error.name === 'AbortError') {
                 showStatus('error', '⏱️ Waktu koneksi habis. Periksa koneksi internet Anda.');
-                setSyncStatus('error');
-                isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_timeout', { error: 'timeout' });
-                return;
-            }
-
-            if (error instanceof TypeError) {
-                showStatus('error', '🌐 Gagal terhubung ke server. Kemungkinan masalah CORS atau jaringan.');
-                setSyncStatus('error');
-                isSubmitting = false;
-                startAutoSave();
-                logActivity('submit_network_error', { error: 'network' });
-                return;
-            }
-
-            if (retryCount < MAX_RETRIES) {
-                showStatus('warning', `🔄 Gagal terhubung. Mencoba ulang (${retryCount + 1}/${MAX_RETRIES})...`);
-                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retryCount + 1)));
+            } else if (retryCount < MAX_RETRIES) {
+                showStatus('warning', '🔄 Gagal terhubung. Mencoba ulang (' + (retryCount + 1) + '/' + MAX_RETRIES + ')...');
+                await new Promise(function(resolve) { setTimeout(resolve, RETRY_DELAY * (retryCount + 1)); });
                 return submitToServer(payload, retryCount + 1);
             } else {
                 showStatus('error', '❌ Gagal terhubung ke server. Periksa koneksi internet Anda.');
             }
             setSyncStatus('error');
             isSubmitting = false;
-            startAutoSave();
-            logActivity('submit_failed', { error: error.message });
         } finally {
             setLoading(false);
         }
     }
 
-    async function continueSubmitProcess(payload) {
-        isSubmitting = true;
-        saveDraftNow();
-        logActivity('form_submitted_for_review', { email: payload.email });
-        showConfirmation(payload);
+    function setLoading(loading) {
+        submitButton.disabled = loading;
+        if (loading) {
+            submitButton.innerHTML = '<span class="button-loading"><span class="spinner"></span> Mengirim...</span>';
+        } else {
+            submitButton.innerHTML = '✨ Konfirmasi Kehadiran ✨';
+        }
     }
 
+    // ===================== KONFIRMASI =====================
+    let pendingSubmitData = null;
+
+    function showConfirmation(data) {
+        pendingSubmitData = data;
+        let alasanDisplay = '';
+        if (data.kehadiran === 'tidak_hadir' && data.alasan) {
+            alasanDisplay = '<br><strong>❌ Alasan:</strong> ' + data.alasan;
+        }
+        const kehadiranLabel = {
+            'online': '💻 Online (Hadir Virtual)',
+            'offline': '🏢 Offline (Hadir Langsung)',
+            'tidak_hadir': '❌ Tidak Hadir'
+        };
+        const confirmationHTML = 
+            '<div class="confirmation-section">' +
+                '<div class="confirmation-section-title">👤 Data Orang Tua/Wali</div>' +
+                '<strong>Nama:</strong> ' + data.namaOrtu + '<br>' +
+                '<strong>Hubungan:</strong> ' + data.hubungan + '<br>' +
+                '<strong>WhatsApp:</strong> ' + data.whatsapp +
+            '</div>' +
+            '<div class="confirmation-section">' +
+                '<div class="confirmation-section-title">🎓 Data Mahasiswa</div>' +
+                '<strong>Nama:</strong> ' + data.nama + '<br>' +
+                '<strong>NIM:</strong> ' + data.nim + '<br>' +
+                '<strong>Prodi:</strong> ' + data.prodi +
+            '</div>' +
+            '<div class="confirmation-section">' +
+                '<div class="confirmation-section-title">📋 Data Absen</div>' +
+                '<strong>Kehadiran:</strong> ' + (kehadiranLabel[data.kehadiran] || data.kehadiran) + alasanDisplay +
+                (data.email ? '<br><strong>📧 Email:</strong> ' + data.email : '') +
+                (data.keterangan ? '<br><strong>📝 Keterangan:</strong> ' + data.keterangan : '') +
+            '</div>';
+        
+        confirmationData.innerHTML = confirmationHTML;
+        confirmationDialog.classList.add('active');
+    }
+
+    confirmYes.addEventListener('click', async function() {
+        confirmationDialog.classList.remove('active');
+        if (pendingSubmitData) {
+            await submitToServer(pendingSubmitData);
+            pendingSubmitData = null;
+        }
+    });
+
+    confirmNo.addEventListener('click', function() {
+        confirmationDialog.classList.remove('active');
+        pendingSubmitData = null;
+        isSubmitting = false;
+        showStatus('info', 'ℹ️ Pengiriman dibatalkan.');
+        setTimeout(clearStatus, 3000);
+    });
+
     // ===================== SUBMIT FORM =====================
-    form.addEventListener('submit', async function(event) {
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         if (form.classList.contains('form-locked')) {
-            showStatus('error', '🔒 Form terkunci. Menunggu waktu pelaksanaan.');
+            showStatus('error', '🔒 Form terkunci.');
             return;
         }
 
         if (isSubmitting) {
-            showStatus('warning', '⏳ Sedang memproses, harap tunggu...');
-            return;
-        }
-
-        if (!checkSession()) {
-            return;
-        }
-
-        if (!checkRateLimit()) {
-            submitButton.disabled = true;
-            submitButton.textContent = '⏳ Cooldown Aktif';
+            showStatus('warning', '⏳ Sedang memproses...');
             return;
         }
 
         const honeypot = document.getElementById('website').value;
         if (honeypot) {
-            showStatus('error', '❌ Spam terdeteksi. Form tidak bisa diproses.');
-            logActivity('spam_detected', { honeypot: true });
+            showStatus('error', '❌ Spam terdeteksi.');
             return;
         }
 
-        const namaOrtuInput = document.getElementById('namaOrtu').value;
-        const namaOrtu = normalizeNama(namaOrtuInput);
+        const namaOrtu = normalizeNama(document.getElementById('namaOrtu').value);
         const hubungan = document.getElementById('hubungan').value;
-        const namaInput = document.getElementById('nama').value;
-        const nama = normalizeNama(namaInput);
+        const nama = normalizeNama(document.getElementById('nama').value);
         const nim = document.getElementById('nim').value.trim();
         const prodi = document.getElementById('prodi').value;
         const whatsappInput = document.getElementById('whatsapp').value.trim();
@@ -2788,28 +1696,28 @@
         let isValid = true;
 
         if (!namaOrtu || namaOrtu.length < 2) {
-            showFieldError('namaOrtu', 'Nama orang tua/wali minimal 2 karakter');
+            showFieldError('namaOrtu', 'Nama minimal 2 karakter');
             isValid = false;
         } else {
             clearFieldError('namaOrtu');
         }
 
         if (!hubungan) {
-            showFieldError('hubungan', 'Pilih hubungan dengan mahasiswa');
+            showFieldError('hubungan', 'Pilih hubungan');
             isValid = false;
         } else {
             clearFieldError('hubungan');
         }
 
         if (!nama || nama.length < 2) {
-            showFieldError('nama', 'Nama mahasiswa minimal 2 karakter');
+            showFieldError('nama', 'Nama minimal 2 karakter');
             isValid = false;
         } else {
             clearFieldError('nama');
         }
 
         if (!isValidNIM(nim)) {
-            showFieldError('nim', 'NIM harus 8-20 digit angka');
+            showFieldError('nim', 'NIM harus tepat 9 digit angka');
             isValid = false;
         } else {
             clearFieldError('nim');
@@ -2843,55 +1751,29 @@
             clearFieldError('kehadiran');
         }
 
-        if (kehadiran === 'tidak_hadir') {
-            if (!alasan || alasan.length < 5) {
-                showFieldError('alasan', 'Alasan minimal 5 karakter');
-                isValid = false;
-            } else {
-                clearFieldError('alasan');
-            }
+        if (kehadiran === 'tidak_hadir' && (!alasan || alasan.length < 5)) {
+            showFieldError('alasan', 'Alasan minimal 5 karakter');
+            isValid = false;
+        } else {
+            clearFieldError('alasan');
         }
 
         if (!isValid) {
             showStatus('error', '❌ Periksa kembali field yang ditandai merah.');
-            logActivity('validation_failed', { fields: ['invalid'] });
-            return;
-        }
-
-        if (email && !emailVerified) {
-            pendingSubmitAfterVerification = {
-                namaOrtu,
-                hubungan,
-                nama,
-                nim,
-                prodi,
-                whatsapp,
-                email,
-                kehadiran,
-                alasan: kehadiran === 'tidak_hadir' ? alasan : '',
-                keterangan,
-                semester: 'Genap 2025/2026',
-                periode: 'Februari 2026 - Agustus 2027',
-                tanggalPelaksanaan: CONFIG_WAKTU.tanggal,
-                waktuMulai: CONFIG_WAKTU.mulai,
-                waktuSelesai: CONFIG_WAKTU.selesai
-            };
-            
-            showVerificationModal(email);
             return;
         }
 
         const payload = {
-            namaOrtu,
-            hubungan,
-            nama,
-            nim,
-            prodi,
-            whatsapp,
-            email,
-            kehadiran,
-            alasan: kehadiran === 'tidak_hadir' ? alasan : '',
-            keterangan,
+            namaOrtu: namaOrtu,
+            hubungan: hubungan,
+            nama: nama,
+            nim: nim,
+            prodi: prodi,
+            whatsapp: whatsapp,
+            email: email,
+            kehadiran: kehadiran,
+            alasan: alasan,
+            keterangan: keterangan,
             semester: 'Genap 2025/2026',
             periode: 'Februari 2026 - Agustus 2027',
             tanggalPelaksanaan: CONFIG_WAKTU.tanggal,
@@ -2900,53 +1782,22 @@
         };
 
         isSubmitting = true;
-        saveDraftNow();
-        logActivity('form_submitted_for_review', { email: email, nama: nama, nim: nim });
-
         showConfirmation(payload);
     });
 
-    // ===================== OFFLINE HANDLING =====================
-    window.addEventListener('offline', () => {
-        showStatus('warning', '📡 Anda offline. Data akan disimpan lokal.');
-        setSyncStatus('error');
-        logActivity('offline_mode', { offline: true });
-    });
-
-    window.addEventListener('online', () => {
-        showStatus('success', '✅ Koneksi pulih. Data akan disinkronkan.');
-        triggerSyncDebounce();
-        logActivity('online_mode', { offline: false });
-    });
-
     // ===================== INISIALISASI =====================
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', function() {
         displayTanggal.textContent = formatTanggalDisplay(CONFIG_WAKTU.tanggal);
-        displayWaktu.textContent = `${CONFIG_WAKTU.mulai} - ${CONFIG_WAKTU.selesai} WIB`;
+        displayWaktu.textContent = CONFIG_WAKTU.mulai + ' - ' + CONFIG_WAKTU.selesai + ' WIB';
         
-        loadDraft();
         toggleAlasanField();
         updateRadioStyles();
         splashScreen.focus();
         setSyncStatus('synced');
-        
-        checkSession();
-        checkAndCleanExpiredRateLimit();
         checkFormAccess();
-        
-        testConnection().then(isConnected => {
-            if (!isConnected) {
-                showStatus('error', '⚠️ Tidak dapat terhubung ke server. Periksa kembali URL Web App atau koneksi internet.');
-                logActivity('connection_test_failed', { connected: false });
-            } else {
-                logActivity('connection_test_success', { connected: true });
-            }
-        });
-        
-        logActivity('page_loaded', { page: 'index' });
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !splashScreen.classList.contains('splash-hidden')) {
             splashScreen.classList.add('splash-hidden');
             checkFormAccess();
@@ -2954,19 +1805,6 @@
     });
 
     setInterval(checkFormAccess, 30000);
-
-    window.addEventListener('beforeunload', () => {
-        saveDraftNow();
-        logActivity('page_unloaded', { page: 'index' });
-        stopCooldownCountdown();
-    });
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            saveDraftNow();
-            logActivity('page_hidden', { page: 'index' });
-        }
-    });
 </script>
 </body>
 </html>
