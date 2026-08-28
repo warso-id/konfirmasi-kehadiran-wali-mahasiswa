@@ -1075,7 +1075,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="whatsapp">No. WhatsApp Orang Tua/Wali <span class="required">*</span></label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxxx (13-15 digit)" maxlength="16" inputmode="tel" autocomplete="tel-national" required aria-required="true" disabled>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx (13-15 digit)" maxlength="16" inputmode="tel" autocomplete="tel-national" required aria-required="true" disabled>
                 <div class="field-error" id="whatsappError" aria-live="polite"></div>
                 <div class="field-warning" id="whatsappWarning" aria-live="polite"></div>
                 <div class="field-hint">Format: 08xx atau 628xx, 13-15 digit</div>
@@ -1347,8 +1347,18 @@
 
     function isValidWhatsApp(number) {
         const clean = String(number).replace(/\D/g, '');
-        if (clean.length < 13 || clean.length > 15) return false;
-        return clean.startsWith('08') || clean.startsWith('628');
+        
+        // Format 08xx: 11-13 digit (08 + 9-11 digit)
+        if (clean.startsWith('08')) {
+            return clean.length >= 11 && clean.length <= 13;
+        }
+        
+        // Format 628xx: 12-14 digit (628 + 9-11 digit)
+        if (clean.startsWith('628')) {
+            return clean.length >= 12 && clean.length <= 14;
+        }
+        
+        return false;
     }
 
     function isValidEmail(email) {
